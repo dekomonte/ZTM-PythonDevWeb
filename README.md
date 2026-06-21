@@ -5,4 +5,7 @@
 ![home](./static/assets/images/readme_image.png)
 
 #### How to run
-`flask --app app run --debug` to run on debug mode
+* `git clone [URL repository]`
+* Create virtual environment
+* `pip install Flask`
+* `flask --app app run --debug` to run on debug mode
