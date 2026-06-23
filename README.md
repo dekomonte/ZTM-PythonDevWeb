@@ -2,7 +2,7 @@
 
 "Web Development with Python" from **ZTM - The Complete Python Developer** course 
 
-![home](./static/assets/images/readme_image.png)
+[home](./static/assets/images/readme_image.png)
 
 #### How to run
 
