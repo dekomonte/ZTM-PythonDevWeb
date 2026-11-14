@@ -23,5 +23,5 @@ def submit_form():
         return redirect(url_for("html_page", page_name="thankyou.html"))
     
     else:
-        
+
         return "Wrong! Bad thing! Try again!"
