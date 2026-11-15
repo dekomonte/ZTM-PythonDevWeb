@@ -9,20 +9,117 @@
 
   <meta name="description" content="Software development projects and portfolio.">
   <meta name="author" content="Your Name">
-  <meta name="google" content="notranslate">
 
+  <meta name="google" content="notranslate">
   <meta name="msapplication-tap-highlight" content="no">
 
   <link rel="apple-touch-icon" sizes="180x180"
-        href="./static/assets/apple-icon-180x180.png">
-  <link href="./static/assets/favicon.ico" rel="icon">
+        href="{{ url_for('static', filename='assets/apple-icon-180x180.png') }}">
+  <link rel="icon"
+        href="{{ url_for('static', filename='assets/favicon.ico') }}">
 
   <title>Works | Portfolio</title>
 
-  <link href="./static/css/main.3f6952e4.css" rel="stylesheet">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/main.3f6952e4.css') }}">
+
+  <!-- Custom styles for Works page -->
+  <style>
+    /* Main content */
+    .works-page {
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    /* Page introduction */
+    .works-intro {
+      margin-bottom: 60px;
+    }
+
+    .works-intro h1 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .works-intro p {
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Projects grid */
+    .works-projects {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .works-project-column {
+      margin-bottom: 30px;
+    }
+
+    /* Individual project card */
+    .project-card {
+      height: 100%;
+      background: #fff;
+      border: 1px solid #eaeaea;
+      overflow: hidden;
+    }
+
+    .project-card img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .project-card-content {
+      padding: 25px;
+    }
+
+    .project-number {
+      display: block;
+      margin-bottom: 10px;
+      color: #999;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      line-height: 1.6;
+    }
+
+    .project-technologies {
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .project-card .btn {
+      margin-top: 10px;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 767px) {
+      .works-page {
+        padding-top: 70px;
+      }
+
+      .works-intro {
+        margin-bottom: 40px;
+      }
+
+      .project-card img {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 
-<body class="">
+<body>
 
   <!-- Decorative Borders -->
   <div id="site-border-left"></div>
@@ -30,7 +127,7 @@
   <div id="site-border-top"></div>
   <div id="site-border-bottom"></div>
 
-  <!-- Header -->
+  <!-- Navigation -->
   <header>
     <nav class="navbar navbar-fixed-top navbar-default">
       <div class="container">
@@ -50,21 +147,31 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
 
           <ul class="nav navbar-nav">
+
             <li>
-              <a href="{{ url_for('my_home') }}">01 : Home</a>
+              <a href="{{ url_for('my_home') }}">
+                01 : Home
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="{{ url_for('html_page', page_name='works.html') }}">
+                02 : Works
+              </a>
             </li>
 
             <li>
-              <a href="{{ url_for('html_page', page_name='works.html') }}">02 : Works</a>
+              <a href="{{ url_for('html_page', page_name='about.html') }}">
+                03 : About me
+              </a>
             </li>
 
             <li>
-              <a href="{{ url_for('html_page', page_name='about.html') }}">03 : About me</a>
+              <a href="{{ url_for('html_page', page_name='contact.html') }}">
+                04 : Contact
+              </a>
             </li>
 
-            <li>
-              <a href="{{ url_for('html_page', page_name='contact.html') }}">04 : Contact</a>
-            </li>
           </ul>
 
         </div>
@@ -73,13 +180,14 @@
   </header>
 
   <!-- Main Content -->
-  <div class="section-container">
+  <main class="section-container works-page">
     <div class="container">
-      <div class="row">
 
-        <!-- Page Introduction -->
-        <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
-          <div class="text-center">
+      <!-- Page Introduction -->
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+          <div class="text-center works-intro">
 
             <h1 class="h2">02 : Works</h1>
 
@@ -90,248 +198,130 @@
             </p>
 
           </div>
+
         </div>
+      </div>
 
-        <!-- Projects Carousel -->
-        <div class="col-md-12">
+      <!-- Projects -->
+      <div class="row works-projects">
 
-          <div id="myCarousel" class="carousel slide projects-carousel">
+        <!-- PROJECT 001 -->
+        <div class="col-sm-4 works-project-column">
 
-            <div class="carousel-inner">
+          <article class="project-card">
 
-              <!-- First Carousel Page -->
-              <div class="item active">
+            <img
+              src="{{ url_for('static', filename='assets/images/work01-hover.jpg') }}"
+              class="img-responsive"
+              alt="Wedding Page project">
 
-                <div class="row">
+            <div class="project-card-content">
 
-                  <!-- Project 001 -->
-                  <div class="col-sm-4">
+              <span class="project-number">001</span>
 
-                    <a href="{{ url_for('html_page', page_name='work.html') }}"
-                       class="black-image-project-hover">
+              <h3>Wedding Page</h3>
 
-                      <img src="./static/assets/images/work01-hover.jpg"
-                           alt="Wedding Page project"
-                           class="img-responsive">
-                    </a>
+              <p>
+                Full-stack web application for wedding guest management,
+                RSVP confirmations and gift reservations.
+              </p>
 
-                    <div class="card-container card-container-lg">
+              <p class="project-technologies">
+                <strong>Technologies:</strong>
+                Next.js, NestJS and PostgreSQL.
+              </p>
 
-                      <h4>001/006</h4>
-                      <h3>Wedding Page</h3>
+              <a
+                href="https://github.com/SEU_USUARIO/wedding-page"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-default">
 
-                      <p>
-                        Full-stack web application for wedding guest
-                        management, RSVP and gift reservations.
-                      </p>
+                GitHub Repository
 
-                      <a href="{{ url_for('html_page', page_name='work.html') }}"
-                         class="btn btn-default">
-                        Discover
-                      </a>
-
-                      <a href="https://github.com/seu-usuario/wedding-page"
-                         target="_blank"
-                         rel="noopener noreferrer">
-                        GitHub
-                      </a>
-
-                    </div>
-                  </div>
-
-                  <!-- Project 002 -->
-                  <div class="col-sm-4">
-
-                    <a href="https://github.com/seu-usuario"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="black-image-project-hover">
-
-                      <img src="./static/assets/images/work02-hover.jpg"
-                           alt="Python projects"
-                           class="img-responsive">
-                    </a>
-
-                    <div class="card-container card-container-lg">
-
-                      <h4>002/006</h4>
-                      <h3>Python Projects</h3>
-
-                      <p>
-                        Programming exercises, experiments and
-                        applications developed with Python.
-                      </p>
-
-                      <a href="https://github.com/seu-usuario"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         class="btn btn-default">
-                        View Projects
-                      </a>
-
-                    </div>
-                  </div>
-
-                  <!-- Project 003 -->
-                  <div class="col-sm-4">
-
-                    <a href="https://github.com/seu-usuario"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="black-image-project-hover">
-
-                      <img src="./static/assets/images/work03-hover.jpg"
-                           alt="Flask web development"
-                           class="img-responsive">
-                    </a>
-
-                    <div class="card-container card-container-lg">
-
-                      <h4>003/006</h4>
-                      <h3>Flask Projects</h3>
-
-                      <p>
-                        Web applications and backend development
-                        using Python and Flask.
-                      </p>
-
-                      <a href="https://github.com/seu-usuario"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         class="btn btn-default">
-                        View Projects
-                      </a>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- Second Carousel Page -->
-              <div class="item">
-
-                <div class="row">
-
-                  <!-- Project 004 -->
-                  <div class="col-sm-4">
-
-                    <a href="https://github.com/seu-usuario"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="black-image-project-hover">
-
-                      <img src="./static/assets/images/work02-hover.jpg"
-                           alt="Database projects"
-                           class="img-responsive">
-                    </a>
-
-                    <div class="card-container">
-
-                      <h4>004/006</h4>
-                      <h3>Database Projects</h3>
-
-                      <p>
-                        Database modeling, SQL queries and
-                        data management projects.
-                      </p>
-
-                      <a href="https://github.com/seu-usuario"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         class="btn btn-default">
-                        View Projects
-                      </a>
-
-                    </div>
-                  </div>
-
-                  <!-- Project 005 -->
-                  <div class="col-sm-4">
-
-                    <a href="https://github.com/seu-usuario"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="black-image-project-hover">
-
-                      <img src="./static/assets/images/work01-hover.jpg"
-                           alt="Academic projects"
-                           class="img-responsive">
-                    </a>
-
-                    <div class="card-container">
-
-                      <h4>005/006</h4>
-                      <h3>Academic Projects</h3>
-
-                      <p>
-                        Projects developed during my university
-                        studies in engineering and technology.
-                      </p>
-
-                      <a href="https://github.com/seu-usuario"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         class="btn btn-default">
-                        View Projects
-                      </a>
-
-                    </div>
-                  </div>
-
-                  <!-- Project 006 -->
-                  <div class="col-sm-4">
-
-                    <a href="https://github.com/seu-usuario"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="black-image-project-hover">
-
-                      <img src="./static/assets/images/work03-hover.jpg"
-                           alt="Other projects"
-                           class="img-responsive">
-                    </a>
-
-                    <div class="card-container">
-
-                      <h4>006/006</h4>
-                      <h3>Other Projects</h3>
-
-                      <p>
-                        Other personal projects, experiments
-                        and software development studies.
-                      </p>
-
-                      <a href="https://github.com/seu-usuario"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         class="btn btn-default">
-                        View Projects
-                      </a>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+              </a>
 
             </div>
+          </article>
 
-            <!-- Carousel Controls -->
-            <a class="left carousel-control"
-               href="#myCarousel"
-               data-slide="prev">‹</a>
+        </div>
 
-            <a class="right carousel-control"
-               href="#myCarousel"
-               data-slide="next">›</a>
+        <!-- PROJECT 002 -->
+        <div class="col-sm-4 works-project-column">
 
-          </div>
+          <article class="project-card">
+
+            <img
+              src="{{ url_for('static', filename='assets/images/work02-hover.jpg') }}"
+              class="img-responsive"
+              alt="Python projects">
+
+            <div class="project-card-content">
+
+              <span class="project-number">002</span>
+
+              <h3>Python Projects</h3>
+
+              <p>
+                Programming exercises, experiments and applications
+                developed with Python.
+              </p>
+
+              <a
+                href="https://github.com/dekomonte/python-reference"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-default">
+
+                GitHub Repository
+
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+
+        <!-- PROJECT 003 -->
+        <div class="col-sm-4 works-project-column">
+
+          <article class="project-card">
+
+            <img
+              src="{{ url_for('static', filename='assets/images/work03-hover.png') }}"
+              class="img-responsive"
+              alt="Flask projects">
+
+            <div class="project-card-content">
+
+              <span class="project-number">003</span>
+
+              <h3>Flask Projects</h3>
+
+              <p>
+                Web applications and backend development
+                using Python and Flask.
+              </p>
+
+              <a
+                href="https://github.com/dekomonte/ZTM-PythonDevWeb"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-default">
+
+                GitHub Repository
+
+              </a>
+
+            </div>
+          </article>
+
         </div>
 
       </div>
+
     </div>
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="footer-container text-center">
@@ -344,25 +334,29 @@
           <p>
             © 2026 Your Name |
 
-            <a href="https://github.com/seu-usuario"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a
+              href="https://github.com/SEU_USUARIO"
+              target="_blank"
+              rel="noopener noreferrer">
               GitHub
             </a>
             /
 
-            <a href="https://www.linkedin.com/in/seu-usuario"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/SEU_USUARIO"
+              target="_blank"
+              rel="noopener noreferrer">
               LinkedIn
             </a>
           </p>
 
           <p>
             Website created with
-            <a href="https://www.mashup-template.com/"
-               target="_blank"
-               rel="noopener noreferrer">
+
+            <a
+              href="https://www.mashup-template.com/"
+              target="_blank"
+              rel="noopener noreferrer">
               Mashup Template
             </a>
           </p>
@@ -375,13 +369,14 @@
 
   <!-- Scripts -->
   <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener("DOMContentLoaded", function () {
       navActivePage();
     });
   </script>
 
-  <script type="text/javascript"
-          src="./static/main.70a66962.js"></script>
+  <script
+    src="{{ url_for('static', filename='main.70a66962.js') }}">
+  </script>
 
 </body>
 </html>

@@ -13,12 +13,19 @@ def html_page(page_name):
 @app.route("/submit_form", methods = ['POST'])
 def submit_form():
 
+    #Permanencia será com arquivo, mas poderia ser com banco de dados
+    nome_arquivo = "database.txt"
+
     if request.method == 'POST':
 
         email = request.form["email"]
         nome = request.form["subject"]
         mensagem = request.form["message"]
-        print(email,nome,mensagem)
+
+        # print(email,nome,mensagem)
+
+        with open(nome_arquivo, "a",encoding="utf-8") as database:
+            database.write(f"{nome},{email},{mensagem}\n")
 
         return redirect(url_for("html_page", page_name="thankyou.html"))
     
