@@ -1,6 +1,6 @@
 # ZTM-PythonDevWeb
 
-"Web Development with Python" from **ZTM - The Complete Python Developer** course 
+"Web Development with Python" from **ZTM - The Complete Python Developer**
 
 ![home](./static/assets/images/readme_image.png)
 
